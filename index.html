@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPPU T.Y. B.Sc. (Computer Science) - NEP Syllabus & Learning Hub</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .dark ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #334155;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    .glass-card {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen transition-colors duration-300 font-sans">
+
+  <header class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 glass-card border-b border-slate-200 dark:border-slate-800 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20">
+        <!-- Brand Logo & Title -->
+        <a href="#hero" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-violet-500 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30 group-hover:scale-105 transition-transform">
+            <i class="fa-solid fa-graduation-cap text-xl"></i>
+          </div>
+          <div>
+            <span class="text-xs uppercase tracking-wider font-bold text-indigo-600 dark:text-indigo-400 block">SPPU Pune • NEP CBCS</span>
+            <span class="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white tracking-tight">T.Y. B.Sc. Comp. Sci.</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-1 lg:gap-2 font-medium text-sm text-slate-600 dark:text-slate-300">
+          <a href="#hero" class="px-3 py-2 rounded-lg hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Home</a>
+          <a href="#syllabus-section" onclick="filterSemester('sem5')" class="px-3 py-2 rounded-lg hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Sem V</a>
+          <a href="#syllabus-section" onclick="filterSemester('sem6')" class="px-3 py-2 rounded-lg hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Sem VI</a>
+          <a href="#syllabus-section" onclick="filterSemester('all')" class="px-3 py-2 rounded-lg hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">All Courses</a>
+          <a href="#about" class="px-3 py-2 rounded-lg hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">About NEP</a>
+          <a href="#feedback" class="px-3 py-2 rounded-lg hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Feedback</a>
+        </nav>
+
+        <!-- Right actions: Dark Mode & Mobile Menu Toggle -->
+        <div class="flex items-center gap-3">
+          <button id="themeToggleBtn" aria-label="Toggle Theme" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition shadow-sm">
+            <i class="fa-solid fa-moon dark:hidden"></i>
+            <i class="fa-solid fa-sun hidden dark:inline text-amber-400"></i>
+          </button>
+          
+          <button id="mobileMenuBtn" aria-label="Open Mobile Menu" class="md:hidden p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+            <i class="fa-solid fa-bars text-lg"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileMenu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-1 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+      <a href="#hero" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800" onclick="toggleMobileMenu()">Home</a>
+      <a href="#syllabus-section" onclick="filterSemester('sem5'); toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Semester V Syllabus</a>
+      <a href="#syllabus-section" onclick="filterSemester('sem6'); toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Semester VI Syllabus</a>
+      <a href="#syllabus-section" onclick="filterSemester('all'); toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">All Subjects & Electives</a>
+      <a href="#about" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800" onclick="toggleMobileMenu()">About NEP CBCS</a>
+      <a href="#feedback" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800" onclick="toggleMobileMenu()">Feedback</a>
+    </div>
+  </header>
+
+  <section id="hero" class="relative overflow-hidden pt-12 pb-16 lg:pt-20 lg:pb-24 bg-gradient-to-b from-indigo-50/70 via-slate-50 to-slate-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-950">
+    <div class="absolute inset-0 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.12] dark:opacity-[0.07] pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-3xl mx-auto">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-100 dark:bg-indigo-950/80 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 text-xs sm:text-sm font-semibold mb-6 shadow-sm">
+          <span class="flex h-2 w-2 rounded-full bg-indigo-500 animate-pulse"></span>
+          SPPU NEP 2020 CBCS Pattern (w.e.f 2026-27)
+        </div>
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-tight sm:leading-none">
+          T.Y. B.Sc. <span class="bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-500 bg-clip-text text-transparent">Computer Science</span>
+        </h1>
+        <p class="mt-4 sm:mt-6 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+          Accredited course outline, syllabus chapters, marks schemes, and integrated video tutorials for Savitribai Phule Pune University Third Year Computer Science students.
+        </p>
+
+        <!-- Quick Action Buttons -->
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <a href="#syllabus-section" onclick="filterSemester('sem5')" class="px-6 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm shadow-lg shadow-indigo-600/30 hover:-translate-y-0.5 transition flex items-center gap-2">
+            <i class="fa-solid fa-book-open"></i> Explore Semester V
+          </a>
+          <a href="#syllabus-section" onclick="filterSemester('sem6')" class="px-6 py-3.5 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-white font-semibold text-sm border border-slate-200 dark:border-slate-700 shadow-sm hover:-translate-y-0.5 transition flex items-center gap-2">
+            <i class="fa-solid fa-code"></i> Explore Semester VI
+          </a>
+        </div>
+
+        <!-- Metric badges -->
+        <div class="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto pt-6 border-t border-slate-200 dark:border-slate-800">
+          <div class="p-4 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+            <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">Level 5.5</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Third Year NEP Level</div>
+          </div>
+          <div class="p-4 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+            <div class="text-2xl font-bold text-violet-600 dark:text-violet-400">10+ Courses</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Core & Major Electives</div>
+          </div>
+          <div class="p-4 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+            <div class="text-2xl font-bold text-emerald-600 dark:text-emerald-400">50 Marks</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">IE: 15 / UE: 35 per Course</div>
+          </div>
+          <div class="p-4 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+            <div class="text-2xl font-bold text-amber-500 dark:text-amber-400">Videos</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Curated YouTube Lectures</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10" id="syllabus-section">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white flex items-center gap-3">
+          <i class="fa-solid fa-layer-group text-indigo-600 dark:text-indigo-400"></i> Course Syllabus & Lectures
+        </h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Select a semester or search specific subjects, chapters, or keywords.</p>
+      </div>
+
+      <!-- Filters & Search -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+        <!-- Search bar -->
+        <div class="relative min-w-[240px]">
+          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+          <input type="text" id="searchInput" placeholder="Search Java, OS, React..." oninput="handleSearch()" class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 transition" />
+        </div>
+
+        <!-- Semester Tabs -->
+        <div class="inline-flex p-1 rounded-xl bg-slate-200 dark:bg-slate-800 text-xs font-semibold">
+          <button id="filterAll" onclick="filterSemester('all')" class="px-4 py-2 rounded-lg bg-white dark:bg-indigo-600 text-slate-900 dark:text-white shadow-sm transition">All</button>
+          <button id="filterSem5" onclick="filterSemester('sem5')" class="px-4 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition">Semester V</button>
+          <button id="filterSem6" onclick="filterSemester('sem6')" class="px-4 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition">Semester VI</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Syllabus Grid Container (Injected via JS) -->
+    <div id="courseCardsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Cards rendered here dynamically -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="noResults" class="hidden py-16 text-center">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400">
+        <i class="fa-solid fa-file-circle-xmark text-2xl"></i>
+      </div>
+      <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200">No subjects found</h3>
+      <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Try another search keyword or reset the semester filter.</p>
+    </div>
+  </main>
+
+  <div id="syllabusModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6" role="dialog" aria-modal="true">
+    <div class="relative w-full max-w-4xl bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden transform transition-all max-h-[92vh] flex flex-col">
+      
+      <!-- Modal Header -->
+      <div class="p-5 sm:p-6 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/90 flex items-start justify-between gap-4 sticky top-0 z-10">
+        <div class="flex-1">
+          <div class="flex items-center gap-2 mb-1.5 flex-wrap">
+            <span id="modalCode" class="px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300">CS-301-MJ-T</span>
+            <span id="modalSem" class="px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-300">Semester V</span>
+            <span id="modalCredits" class="px-2.5 py-1 rounded-md text-xs font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300">2 Credits (2 Hrs/Wk)</span>
+            <span id="modalMarks" class="px-2.5 py-1 rounded-md text-xs font-semibold bg-violet-100 text-violet-800 dark:bg-violet-950/60 dark:text-violet-300">IE: 15 | UE: 35 (Total: 50)</span>
+          </div>
+          <h3 id="modalTitle" class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Core Java</h3>
+        </div>
+        <button onclick="closeModal()" aria-label="Close modal" class="w-9 h-9 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-500 hover:text-slate-800 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body (Scrollable) -->
+      <div class="p-5 sm:p-6 overflow-y-auto space-y-6 flex-1 text-slate-700 dark:text-slate-200 text-sm">
+        
+        <!-- Video Tutorial Section -->
+        <div class="bg-slate-900 rounded-xl overflow-hidden shadow-lg border border-slate-800">
+          <div class="px-4 py-2.5 bg-slate-800/90 text-xs font-semibold text-slate-200 flex items-center justify-between">
+            <span class="flex items-center gap-2"><i class="fa-brands fa-youtube text-red-500 text-base"></i> Recommended Topic Video Lecture</span>
+            <span class="text-slate-400">Curated & Embedded</span>
+          </div>
+          <div class="aspect-video w-full">
+            <iframe id="modalVideoFrame" class="w-full h-full" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <!-- Course Objectives & Outcomes -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-800">
+            <h4 class="font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-2 text-sm">
+              <i class="fa-solid fa-bullseye text-indigo-500"></i> Course Objectives
+            </h4>
+            <ul id="modalObjectives" class="space-y-1.5 list-disc list-inside text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+              <!-- Injected by JS -->
+            </ul>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-800">
+            <h4 class="font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-2 text-sm">
+              <i class="fa-solid fa-award text-emerald-500"></i> Course Outcomes (COs)
+            </h4>
+            <ul id="modalOutcomes" class="space-y-1.5 list-disc list-inside text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+              <!-- Injected by JS -->
+            </ul>
+          </div>
+        </div>
+
+        <!-- Chapters Accordion / List -->
+        <div>
+          <h4 class="font-bold text-slate-900 dark:text-white text-base mb-3 flex items-center gap-2">
+            <i class="fa-solid fa-list-check text-indigo-500"></i> Complete Chapter-wise Detailed Syllabus
+          </h4>
+          <div id="modalChapters" class="space-y-3">
+            <!-- Injected chapters -->
+          </div>
+        </div>
+
+        <!-- Reference Books -->
+        <div class="p-4 rounded-xl bg-slate-100/70 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800">
+          <h4 class="font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2 text-xs uppercase tracking-wide text-slate-500">
+            <i class="fa-solid fa-book text-amber-500"></i> Prescribed Reference Books
+          </h4>
+          <ul id="modalReferences" class="text-xs space-y-1 text-slate-600 dark:text-slate-400">
+            <!-- Injected -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 flex items-center justify-between">
+        <span class="text-xs text-slate-500">Savitribai Phule Pune University (NEP-2020)</span>
+        <button onclick="closeModal()" class="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs transition">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <section id="about" class="py-16 sm:py-20 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">Academic Framework</span>
+        <h2 class="text-3xl font-black text-slate-900 dark:text-white tracking-tight mt-1">About SPPU NEP-2020 CBCS Pattern</h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2">
+          Savitribai Phule Pune University has implemented the Choice Based Credit System under the National Education Policy (NEP) for T.Y. B.Sc. (Computer Science).
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-800 hover:shadow-lg transition">
+          <div class="w-12 h-12 rounded-xl bg-indigo-100 dark:bg-indigo-950/80 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xl mb-4">
+            <i class="fa-solid fa-compass-drafting"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Industry-Aligned Core</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            The curriculum shifts to modern frameworks including Angular, React, Node.js, Spring Boot, Artificial Intelligence, and Cloud-native NoSQL architectures.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-800 hover:shadow-lg transition">
+          <div class="w-12 h-12 rounded-xl bg-violet-100 dark:bg-violet-950/80 text-violet-600 dark:text-violet-400 flex items-center justify-center text-xl mb-4">
+            <i class="fa-solid fa-code-branch"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Electives & VSC Tracks</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Flexible career specialization in Data Science, Embedded Systems & IoT, Android Development, Agile Scrum practices, and Software Quality Automation.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-800 hover:shadow-lg transition">
+          <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl mb-4">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Evaluation Architecture</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Each 2-credit course comprises Internal Evaluation (IE: 15 marks) and University Examination (UE: 35 marks) with rigorous hands-on laboratory assessment.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="feedback" class="py-16 sm:py-20 bg-slate-50 dark:bg-slate-950 transition-colors">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 shadow-xl border border-slate-200/80 dark:border-slate-800">
+        <div class="text-center mb-8">
+          <span class="text-xs font-extrabold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">Student & Faculty Voices</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-1">Syllabus Portal Feedback</h2>
+          <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Have suggestions or resource requests for T.Y. B.Sc. CS subjects? Share your thoughts.</p>
+        </div>
+
+        <form id="feedbackForm" onsubmit="submitFeedback(event)" class="space-y-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Your Full Name *</label>
+              <input type="text" id="feedbackName" required placeholder="e.g. Rahul Sharma" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Email Address *</label>
+              <input type="email" id="feedbackEmail" required placeholder="e.g. rahul@example.com" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Relevant Subject</label>
+              <select id="feedbackSubject" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition">
+                <option value="General">General Syllabus Feedback</option>
+                <option value="CS-301 Core Java">CS-301 Core Java</option>
+                <option value="CS-302 Operating Systems">CS-302 Operating Systems</option>
+                <option value="CS-303 Web Technology-I">CS-303 Web Technology-I</option>
+                <option value="CS-304 Theory of Computer Science">CS-304 Theory of Computer Science</option>
+                <option value="CS-351 Advanced Java">CS-351 Advanced Java</option>
+                <option value="CS-352 Design Framework">CS-352 Design Framework (Angular)</option>
+                <option value="CS-353 Web Technology-II">CS-353 Web Tech II (React/Node)</option>
+                <option value="CS-354 Compiler Construction">CS-354 Compiler Construction</option>
+                <option value="Elective Subjects">Elective / Practical Courses</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Rate Portal Experience</label>
+              <div class="flex items-center gap-2 pt-1.5" id="starRating">
+                <button type="button" onclick="setRating(1)" class="star-btn text-amber-400 text-xl"><i class="fa-solid fa-star"></i></button>
+                <button type="button" onclick="setRating(2)" class="star-btn text-amber-400 text-xl"><i class="fa-solid fa-star"></i></button>
+                <button type="button" onclick="setRating(3)" class="star-btn text-amber-400 text-xl"><i class="fa-solid fa-star"></i></button>
+                <button type="button" onclick="setRating(4)" class="star-btn text-amber-400 text-xl"><i class="fa-solid fa-star"></i></button>
+                <button type="button" onclick="setRating(5)" class="star-btn text-amber-400 text-xl"><i class="fa-solid fa-star"></i></button>
+                <span id="ratingValueText" class="text-xs text-slate-500 ml-2 font-medium">5 / 5 Stars</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Feedback / Suggestions *</label>
+            <textarea id="feedbackMessage" rows="4" required placeholder="Write your message, notes, or recommended reference materials..." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"></textarea>
+          </div>
+
+          <button type="submit" class="w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-lg shadow-indigo-600/30 transition flex items-center justify-center gap-2">
+            <i class="fa-solid fa-paper-plane"></i> Submit Feedback
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Toast Message -->
+  <div id="toastMessage" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 max-w-sm bg-slate-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-slate-700 flex items-center gap-3">
+    <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-base">
+      <i class="fa-solid fa-circle-check"></i>
+    </div>
+    <div>
+      <div id="toastTitle" class="text-xs font-bold text-white">Thank You!</div>
+      <div id="toastBody" class="text-xs text-slate-300">Your feedback has been submitted successfully.</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-10 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-slate-500 dark:text-slate-400 space-y-2">
+      <p class="font-semibold text-slate-700 dark:text-slate-300 text-sm">Savitribai Phule Pune University • B.Sc. (Computer Science)</p>
+      <p>CBCS Syllabus Under National Education Policy (NEP 2020) for T.Y. B.Sc. (Computer Science).</p>
+      <div class="pt-4 flex justify-center items-center gap-4 text-slate-400">
+        <a href="#hero" class="hover:text-indigo-500">Back to Top</a>
+        <span>•</span>
+        <a href="#syllabus-section" class="hover:text-indigo-500">Subjects</a>
+        <span>•</span>
+        <a href="#about" class="hover:text-indigo-500">Framework</a>
+        <span>•</span>
+        <a href="#feedback" class="hover:text-indigo-500">Contact/Feedback</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Database of courses based on SPPU T.Y.B.Sc. (Computer Science) NEP 2026-27 Document
+    const coursesData = [
+      // SEMESTER V - CS-301-MJ-T
+      {
+        id: "cs301",
+        code: "CS-301-MJ-T",
+        semester: "sem5",
+        semLabel: "Semester V",
+        title: "Core Java",
+        type: "Major Core",
+        credits: "2 Credits (2 Hr/Wk)",
+        exam: "IE: 15 Marks | UE: 35 Marks (Total 50)",
+        icon: "fa-brands fa-java",
+        iconColor: "text-red-500",
+        videoEmbedUrl: "https://www.youtube.com/embed/eIrMbAQSU34", // FreeCodeCamp Java Course
+        summary: "Introduction to OOP, Java Environment, Classes & Objects, Inheritance, Interfaces, Exception & File Handling, and JavaFX UI.",
+        objectives: [
+          "To learn Object Oriented Programming concepts in Java.",
+          "To study various java concepts like Interface, Packages, File and Exception Handling.",
+          "To design GUI applications using JavaFX controls, containers and event handlers."
+        ],
+        outcomes: [
+          "CO1: Master data types, variables, operators, loops and control statements.",
+          "CO2: Understand classes, objects, access specifiers, and packages.",
+          "CO3: Implement inheritance, abstract classes and interfaces.",
+          "CO4: Perform robust file handling and custom exception management.",
+          "CO5: Develop graphical applications with JavaFX layouts and event handling."
+        ],
+        chapters: [
+          {
+            number: "1",
+            title: "An Introduction to Java (5 Hours)",
+            topics: "Object Oriented Programming Concepts, Introduction to Java, Features of Java, Structure of Java Program, Java Development Tools (JDK, JRE, JVM), Basic concepts: Comments, Data Types, Tokens, Variables, Control Flow Statements, Arrays in Java, Accepting Input (Command Line Arguments, BufferedReader, Scanner, DataInputStream)."
+          },
+          {
+            number: "2",
+            title: "Objects and Classes (6 Hours)",
+            topics: "Defining classes, Access Specifiers (public, protected, private, default), Array of Objects, Constructors & Constructor Overloading, 'this' keyword, static block, static fields & methods, Predefined Classes (Object Class methods: equals(), toString(), hashCode(), getClass()), String & StringBuffer Class, format() method, Creating and Using Packages, Wrapper Classes."
+          },
+          {
+            number: "3",
+            title: "Inheritance and Interface (6 Hours)",
+            topics: "Inheritance Basics (extends Keyword), Types of Inheritance, Superclass, Subclass & use of super keyword, Method Overriding, Runtime polymorphism, final keyword (variables, methods, class), abstract class & abstract methods, Defining and Implementing Interfaces, Functional Interface, Marker Interface, Adapters and Anonymous Inner Class."
+          },
+          {
+            number: "4",
+            title: "Exception and File Handling (5 Hours)",
+            topics: "Dealing with errors, Exception class hierarchy, Checked vs Unchecked Exceptions, Logger Class, Catching Exceptions, Multiple Catch Blocks, Nested try blocks, User Defined Exceptions. Introduction to Files & Streams: FileInput/OutputStream, BufferedInput/OutputStream, DataInput/OutputStream, FileReader/Writer, BufferedReader/Writer, InputStreamReader."
+          },
+          {
+            number: "5",
+            title: "User Interface with JavaFX (8 Hours)",
+            topics: "What is JavaFX, Architecture of JavaFX, LifeCycle of JavaFX Application, Layouts: HBox, VBox, BorderPane, GridPane, FlowPane, StackPane, Containers and Components (Button, Label, Text, TextArea, CheckBox, RadioButton, ComboBox, Menu), JavaFX Charts (Pie, Line, Bar), Event Handling: Adding & Removing Event Handlers."
+          }
+        ],
+        references: [
+          "Complete Reference Java by Herbert Schildt (5th Edition)",
+          "Java 2 Programming Black Book by Steven Holzner",
+          "Programming with Java: A Primer by E. Balagurusamy",
+          "Core Java Volume-I Fundamentals by Cay S. Horstmann & Gary Cornell"
+        ]
+      },
+
+      // SEMESTER V - CS-302-MJ-T
+      {
+        id: "cs302",
+        code: "CS-302-MJ-T",
+        semester: "sem5",
+        semLabel: "Semester V",
+        title: "Operating Systems",
+        type: "Major Core",
+        credits: "2 Credits (2 Hr/Wk)",
+        exam: "IE: 15 Marks | UE: 35 Marks (Total 50)",
+        icon: "fa-solid fa-microchip",
+        iconColor: "text-blue-500",
+        videoEmbedUrl: "https://www.youtube.com/embed/vBURTt97EkA", // Gate Smashers OS Playlist / Lecture
+        summary: "Operating System architecture, process states, CPU scheduling algorithms, memory paging, deadlocks, file systems and disk scheduling.",
+        objectives: [
+          "Understand core OS concepts, services, and modern operating system architecture.",
+          "Learn process scheduling algorithms, context switching, and concurrency.",
+          "Examine memory management models (Paging, Virtual memory) and Deadlock handling."
+        ],
+        outcomes: [
+          "CO1: Understand OS structure and system call services.",
+          "CO2: Analyze efficiency of CPU scheduling algorithms (FCFS, SJF, RR).",
+          "CO3: Evaluate paging, segmentation, and page replacement techniques.",
+          "CO4: Implement deadlock avoidance via Banker's algorithm.",
+          "CO5: Understand disk scheduling algorithms (SSTF, SCAN, LOOK)."
+        ],
+        chapters: [
+          {
+            number: "1",
+            title: "Introduction to Operating System (3 Hours)",
+            topics: "Definition, OS functions & services, need or purpose of OS, OS Structure, Types of Operating Systems, OS operations, Booting process of OS, Advantages & Disadvantages."
+          },
+          {
+            number: "2",
+            title: "Process and Process Scheduling (7 Hours)",
+            topics: "Basic Concepts: Process, Process states, Process Control Block (PCB), Operations on Process. Process Scheduling: Scheduling queues, CPU Schedulers, Context switching, CPU & I/O Burst Cycle, Scheduling Criteria. Scheduling Algorithms: FCFS, Shortest Job First (SJF), Priority Scheduling, Round Robin (RR)."
+          },
+          {
+            number: "3",
+            title: "Memory Management (8 Hours)",
+            topics: "Address binding, Logical vs Physical address space, Memory Management Unit (MMU), Paging concepts (model, page table structure), Segmentation concepts, Paging vs Segmentation, Virtual Memory (demand paging, performance), Page replacement algorithms: FIFO, Optimal, LRU, MFU."
+          },
+          {
+            number: "4",
+            title: "Deadlock (7 Hours)",
+            topics: "Deadlock definition, Process synchronization, Resource allocation graph (RAG), Necessary conditions for Deadlock, Deadlock Handling Methods: Prevention, Avoidance (Safe state, Banker's Algorithm), Detection, Recovery from Deadlock (Process termination, Resource preemption)."
+          },
+          {
+            number: "5",
+            title: "File System Management and Disk Scheduling (5 Hours)",
+            topics: "File attributes, operations, Allocation Methods: Contiguous, Linked, Indexed allocation. Free Space Management (Bit vector, linked list, grouping, counting), Disk structure, Disk Scheduling Algorithms: FCFS, SSTF, SCAN, LOOK."
+          }
+        ],
+        references: [
+          "Operating System Concepts by Avi Silberschatz, Peter Galvin, Greg Gagne",
+          "Operating Systems: Internals and Design Principles by William Stallings",
+          "Advanced Concepts in Operating Systems by M. Singhal and N.G. Shivaratri"
+        ]
+      },
+
+      // SEMESTER V - CS-303-MJ-T
+      {
+        id: "cs303",
+        code: "CS-303-MJ-T",
+        semester: "sem5",
+        semLabel: "Semester V",
+        title: "Web Technology-I",
+        type: "Major Core",
+        credits: "2 Credits (2 Hr/Wk)",
+        exam: "IE: 15 Marks | UE: 35 Marks (Total 50)",
+        icon: "fa-brands fa-html5",
+        iconColor: "text-amber-600",
+        videoEmbedUrl: "https://www.youtube.com/embed/Oe421EPjeBE", // Node.js and Express full course
+        summary: "HTML5 semantic markup, CSS3 Grid/Flexbox, Core JavaScript, ES6+ features, Node.js runtime, asynchronous callbacks, and server file handling.",
+        objectives: [
+          "Master responsive client-side development using HTML5 and CSS3.",
+          "Explore modern ES6+ JavaScript, promises, and async/await.",
+          "Understand Node.js asynchronous architecture and build server HTTP modules."
+        ],
+        outcomes: [
+          "CO1: Build structured web pages using HTML5 elements and CSS3 Flexbox/Grid.",
+          "CO2: Utilize modern ES6+ JS features and DOM manipulation.",
+          "CO3: Grasp asynchronous JavaScript event loop and non-blocking I/O.",
+          "CO4: Implement local file handling and HTTP servers with Node.js modules."
+        ],
+        chapters: [
+          {
+            number: "1",
+            title: "Frontend Fundamentals (HTML, CSS, Core JS) (9 Hours)",
+            topics: "HTML5: Structure, Semantic elements (header, nav, article, footer, aside), Forms & input controls, validation, Multimedia elements. CSS3: Selectors, Box model, Flexbox alignment, CSS Grid layout, Responsive design & media queries. Core JS: Variables, data types, DOM traversal & manipulation, Event handling (click, submit, keyboard)."
+          },
+          {
+            number: "2",
+            title: "Advanced JavaScript (ES6+) (5 Hours)",
+            topics: "Arrow functions and lexical this, Template literals, Object & array destructuring, Spread and Rest operators, ES6 Modules (import/export), Asynchronous JS: Callbacks, Promises lifecycle, async/await syntax, try/catch handling, Logic-building exercises."
+          },
+          {
+            number: "3",
+            title: "Node.js Fundamentals (10 Hours)",
+            topics: "Node runtime architecture, npm & package.json management, Execution Model: Event loop phases, Non-blocking I/O, Core Modules (fs, path, http), Basic server development: creating HTTP servers, handling requests & responses."
+          },
+          {
+            number: "4",
+            title: "File Handling with Node.js (6 Hours)",
+            topics: "File Operations: Reading, writing, appending, deleting files (sync vs async), JSON Handling: parsing and writing JSON data, Directory Management: creating and listing folders, File upload fundamentals & storage middleware."
+          }
+        ],
+        references: [
+          "HTML and CSS: Design and Build Websites by Jon Duckett",
+          "JavaScript and JQuery: Interactive Front-End by Jon Duckett",
+          "Eloquent JavaScript by Marijn Haverbeke",
+          "Web Development with Node and Express by Ethan Brown"
+        ]
+      },
+
+      // SEMESTER V - CS-304-MJ-T
+      {
+        id: "cs304",
+        code: "CS-304-MJ-T",
+        semester: "sem5",
+        semLabel: "Semester V",
+        title: "Theory of Computer Science",
+        type: "Major Core",
+        credits: "2 Credits (2 Hr/Wk)",
+        exam: "IE: 15 Marks | UE: 35 Marks (Total 50)",
+        icon: "fa-solid fa-diagram-project",
+        iconColor: "text-purple-500",
+        videoEmbedUrl: "https://www.youtube.com/embed/58N2N7zJGrQ", // Theory of Computation TOC Gate Smashers
+        summary: "Mathematical models of computation, Deterministic & Nondeterministic Finite Automata, Moore/Mealy machines, CFG, Push Down Automata, and Turing Machines.",
+        objectives: [
+          "Understand formal mathematical foundations of languages and machines.",
+          "Learn grammar classifications, derivation trees, and normal forms.",
+          "Design Push Down Automata and theoretical Turing Machines."
+        ],
+        outcomes: [
+          "CO1: Model computation using finite automata and formal grammars.",
+          "CO2: Convert NFA to DFA and minimize automata with table methods.",
+          "CO3: Construct Chomsky (CNF) and Greibach (GNF) normal forms.",
+          "CO4: Formulate Turing machines for decidable languages."
+        ],
+        chapters: [
+          {
+            number: "1",
+            title: "Finite Automaton (8 Hours)",
+            topics: "Symbols, Alphabets, Strings, DFA (Definition & Examples), NFA (Definition & Examples), NFA to DFA conversion, Finite Automata with output: Moore & Mealy machines, Minimization of DFA using table method."
+          },
+          {
+            number: "2",
+            title: "Regular Expressions and Languages (6 Hours)",
+            topics: "Regular Expressions (RE): Definitions & Examples, Regular Languages, Conversion of RE to FA, Pumping Lemma for Regular Languages and its applications."
+          },
+          {
+            number: "3",
+            title: "Context-Free Grammars and Languages (5 Hours)",
+            topics: "Definition of CFG, Non-terminals, Terminals, Production Rules, Simplification of CFG: Removing useless symbols, unit productions, epsilon-productions, Nullable symbols, Normal Forms: Chomsky Normal Form (CNF) and Greibach Normal Form (GNF)."
+          },
+          {
+            number: "4",
+            title: "Push Down Automata (5 Hours)",
+            topics: "Definition of PDA, Examples of PDA, Construction of PDA using empty stack and final state methods, Instantaneous description."
+          },
+          {
+            number: "5",
+            title: "Turing Machine (6 Hours)",
+            topics: "Turing Machine model, Definition and Design of TM, Language recognizers, Problems on language acceptance, Halting problem overview."
+          }
+        ],
+        references: [
+          "Introduction to Theory of Computation by Michael Sipser",
+          "Automata Theory, Languages and Computation by Hopcroft, Motwani & Ullman",
+          "Theory of Computer Science by K.L.P. Mishra & N. Chandrasekaran"
+        ]
+      },
+
+      // SEMESTER V - CS-307-MJ-T (Elective)
+      {
+        id: "cs307",
+        code: "CS-307-MJ-T",
+        semester: "sem5",
+        semLabel: "Semester V",
+        title: "Data Science and Analytics",
+        type: "Major Elective",
+        credits: "2 Credits (2 Hr/Wk)",
+        exam: "IE: 15 Marks | UE: 35 Marks (Total 50)",
+        icon: "fa-solid fa-chart-pie",
+        iconColor: "text-emerald-500",
+        videoEmbedUrl: "https://www.youtube.com/embed/ua-CiDNNj30", // Data Science Full Course
+        summary: "Big Data lifecycle, Data cleaning & transformation, Exploratory Data Analysis, Visualization libraries, and Machine Learning models.",
+        objectives: [
+          "Understand Data Science lifecycle and Big Data 3Vs.",
+          "Learn data cleaning, transformation, and dimensionality reduction.",
+          "Apply visualization and train Supervised / Unsupervised ML models."
+        ],
+        outcomes: [
+          "CO1: Explain data types, formats and data quality measures.",
+          "CO2: Perform data integration, normalization, and discretization.",
+          "CO3: Construct EDA charts and evaluate models with Precision/Recall/ROC."
+        ],
+        chapters: [
+          {
+            number: "1",
+            title: "Introduction to Data Science & Big Data (4 Hours)",
+            topics: "Data Science lifecycle, Big Data 3 V's (Volume, Velocity, Variety), Structured/Semi-structured/Unstructured data, Data Sources, Data formats, Role of Data Scientist & toolbox."
+          },
+          {
+            number: "2",
+            title: "Data Understanding & Preprocessing (3 Hours)",
+            topics: "Categorical vs Numerical data, Outlier detection, Data pre-processing needs, Data quality metrics: Accuracy, Completeness, Consistency, Timeliness, Validity."
+          },
+          {
+            number: "3",
+            title: "Data Pre-processing Techniques (7 Hours)",
+            topics: "Data Cleaning (missing values, noisy data), Data Transformation (Rescaling, Normalizing, Binarizing, One-Hot Encoding), Dimensionality Reduction, Feature Selection, Equal width/frequency binning, Introduction to EDA."
+          },
+          {
+            number: "4",
+            title: "Data Visualization & Analytics (7 Hours)",
+            topics: "Visualization libraries & tools (Histograms, Scatter plots, Heatmaps, Boxplots, Treemap), Types of Analytics (Descriptive, Diagnostic, Predictive, Prescriptive), Metrics: Confusion matrix, Precision, Recall, F1, ROC, AUC, MSE."
+          },
+          {
+            number: "5",
+            title: "Introduction to Machine Learning (9 Hours)",
+            topics: "Supervised vs Unsupervised vs Reinforcement learning, Linear & Logistic Regression, KNN, Random Forest, K-Means clustering, Apriori Algorithm."
+          }
+        ],
+        references: [
+          "Data Mining Concepts and Techniques by Han, Kamber & Pei",
+          "Data Science Fundamentals and Practical Approaches by Nandi & Sharma",
+          "Hands-On Machine Learning with Scikit-Learn by Aurélien Géron"
+        ]
+      },
+
+      // SEMESTER VI - CS-351-MJ-T
+      {
+        id: "cs351",
+        code: "CS-351-MJ-T",
+        semester: "sem6",
+        semLabel: "Semester VI",
+        title: "Advanced Java",
+        type: "Major Core",
+        credits: "2 Credits (2 Hr/Wk)",
+        exam: "IE: 15 Marks | UE: 35 Marks (Total 50)",
+        icon: "fa-brands fa-java",
+        iconColor: "text-amber-500",
+        videoEmbedUrl: "https://www.youtube.com/embed/vtPkZShrvXQ", // Spring Boot full course
+        summary: "Java Collection Framework, Multithreading & Synchronization, JDBC Database connectivity, Servlets, JSP, and Spring Boot REST API development.",
+        objectives: [
+          "Strengthen object collections and multithreading in enterprise environments.",
+          "Build web-based dynamic applications using Servlets and JSP.",
+          "Develop enterprise-ready RESTful web services with Spring Boot and Data JPA."
+        ],
+        outcomes: [
+          "CO1: Utilize Collections (List, Set, Map) and Cursor interfaces.",
+          "CO2: Write synchronized multithreaded applications.",
+          "CO3: Execute database queries through JDBC ResultSets.",
+          "CO4: Create dynamic web pages with Servlets and JSP implicit objects.",
+          "CO5: Build Spring Boot MVC applications and publish REST APIs."
+        ],
+        chapters: [
+          {
+            number: "1",
+            title: "Collections Framework (4 Hours)",
+            topics: "Introduction to Collections, List (ArrayList, LinkedList), Set (HashSet, TreeSet), Map (HashMap, TreeMap, Hashtable), Comparator, Iterator, ListIterator, Enumeration."
+          },
+          {
+            number: "2",
+            title: "Multithreading (4 Hours)",
+            topics: "Thread life cycle, Creating threads (Thread class vs Runnable interface), Thread priorities, Synchronization, Interthread communication (wait, notify, notifyAll)."
+          },
+          {
+            number: "3",
+            title: "Database Programming with JDBC (6 Hours)",
+            topics: "Java Database Connectivity architecture, JDBC driver types, Executing SQL statements, PreparedStatement, CallableStatement, Scrollable & Updatable ResultSet."
+          },
+          {
+            number: "4",
+            title: "Servlets and JSP (6 Hours)",
+            topics: "Servlet hierarchy and lifecycle, Handling GET & POST, Session tracking (Cookies, Hidden Form Fields, URL Rewriting, HttpSession), JSP lifecycle, Scripting tags, Implicit objects, Connecting JSP to databases."
+          },
+          {
+            number: "5",
+            title: "Spring Boot and REST API (10 Hours)",
+            topics: "Spring framework overview, Inversion of Control (IoC), Dependency Injection, Spring Boot MVC fundamentals, Spring Boot with Spring Data JPA, Creating and Testing REST APIs."
+          }
+        ],
+        references: [
+          "Complete Reference Java by Herbert Schildt",
+          "Head First Servlets and JSP by Bryan Basham, Kathy Sierra",
+          "Spring Boot in Action by Craig Walls"
+        ]
+      },
+
+      // SEMESTER VI - CS-352-MJ-T
+      {
+        id: "cs352",
+        code: "CS-352-MJ-T",
+        semester: "sem6",
+        semLabel: "Semester VI",
+        title: "Design Framework (Angular)",
+        type: "Major Core",
+        credits: "2 Credits (2 Hr/Wk)",
+        exam: "IE: 15 Marks | UE: 35 Marks (Total 50)",
+        icon: "fa-brands fa-angular",
+        iconColor: "text-rose-600",
+        videoEmbedUrl: "https://www.youtube.com/embed/k5E2AVpwsko", // Angular Full Course
+        summary: "Single Page Application (SPA) architecture, TypeScript fundamentals, Angular standalone components, data binding, routing, services, and reactive forms.",
+        objectives: [
+          "Understand Single Page Applications and Angular CLI architecture.",
+          "Master components, data bindings, structural & attribute directives.",
+          "Implement client-side Angular routing, Guards, and REST API Services."
+        ],
+        outcomes: [
+          "CO1: Create scalable Angular components with standalone design & signals.",
+          "CO2: Implement one-way, two-way data bindings and built-in pipes.",
+          "CO3: Configure routing with parameters, route guards, and 404 handlers.",
+          "CO4: Develop reactive forms with custom validation and HTTP services."
+        ],
+        chapters: [
+          {
+            number: "1",
+            title: "Introduction to Angular & TypeScript (4 Hours)",
+            topics: "Angular Features & Architecture, SPA Concepts, Angular vs AngularJS, TypeScript fundamentals (Types, Interfaces, Classes, Arrow functions, Modules, Decorators), Component reusability & separation of concerns."
+          },
+          {
+            number: "2",
+            title: "Understanding Components & Data Bindings (7 Hours)",
+            topics: "Angular CLI commands (ng new, serve, generate, build), Lifecycle hooks (ngOnInit, ngOnChanges, ngOnDestroy), Data binding: Interpolation, Property, Event, Two-way binding (ngModel), Directives (ngIf, ngFor, ngClass) & Built-in Pipes."
+          },
+          {
+            number: "3",
+            title: "Angular Routing (7 Hours)",
+            topics: "Client-side routing, RouterModule, router-outlet, routerLink, Path mapping, Default & wildcard routes, Route parameters, Child routes, Route Guards (CanActivate), Lazy loading modules & 404 handling."
+          },
+          {
+            number: "4",
+            title: "Services & Dependency Injection (6 Hours)",
+            topics: "Creating Angular Services, HttpClientModule, Dependency Injection framework, Providing dependencies, Injection tokens, Consuming RESTful APIs via injectable services."
+          },
+          {
+            number: "5",
+            title: "Angular Forms and Validation (6 Hours)",
+            topics: "Template-driven forms vs Reactive forms, FormControl, FormGroup, Built-in & Custom Validators, Dynamic forms, Displaying error messages."
+          }
+        ],
+        references: [
+          "Angular Development with TypeScript by Yakov Fain & Anton Moiseev",
+          "Angular: Up and Running by Shyam Seshadri",
+          "Learning Angular by Aristeidis Bampakos"
+        ]
+      },
+
+      // SEMESTER VI - CS-353-MJ-T
+      {
+        id: "cs353",
+        code: "CS-353-MJ-T",
+        semester: "sem6",
+        semLabel: "Semester VI",
+        title: "Web Technology-II",
+        type: "Major Core",
+        credits: "2 Credits (2 Hr/Wk)",
+        exam: "IE: 15 Marks | UE: 35 Marks (Total 50)",
+        icon: "fa-brands fa-react",
+        iconColor: "text-cyan-500",
+        videoEmbedUrl: "https://www.youtube.com/embed/bMknfKXIFA8", // React Full Course
+        summary: "PostgreSQL with Node.js, Express REST API, React.js components & JSX, State management, Hooks (useState, useEffect), JWT and Bcrypt authentication.",
+        objectives: [
+          "Connect PostgreSQL with Node.js securely via parameterized queries.",
+          "Design scalable Express MVC REST APIs with Swagger documentation.",
+          "Develop interactive React single page applications with state hooks."
+        ],
+        outcomes: [
+          "CO1: Implement database pooling and prevent SQL injection in Node.js.",
+          "CO2: Build REST APIs with Express middleware, pagination, and filtering.",
+          "CO3: Construct dynamic user interfaces using React functional components.",
+          "CO4: Secure web applications with JWT authentication and Bcrypt hashing."
+        ],
+        chapters: [
+          {
+            number: "1",
+            title: "Database Connectivity (4 Hours)",
+            topics: "PostgreSQL Integration with Node.js (pg module), Connection pooling, Parameterized queries, Environment variables (.env), Preventing SQL injections."
+          },
+          {
+            number: "2",
+            title: "CRUD Operations and REST API (6 Hours)",
+            topics: "REST architecture, Express Routing and middleware, MVC structure, CRUD APIs with HTTP verbs and status codes, Pagination, Filtering, API documentation using Swagger & Postman."
+          },
+          {
+            number: "3",
+            title: "Introduction to React (10 Hours)",
+            topics: "React fundamentals, JSX syntax, Virtual DOM, Components & Props, State management, React Hooks (useState, useEffect), Fetching backend APIs, Client-side routing with React Router."
+          },
+          {
+            number: "4",
+            title: "Forms, Sessions and Cookies (7 Hours)",
+            topics: "Session management (express-session), Secure Cookies & flags, Form processing & validation, Comparison of session-based vs token-based authentication."
+          },
+          {
+            number: "5",
+            title: "Authentication and Authorization (3 Hours)",
+            topics: "Password hashing using Bcrypt, Salting, JWT (JSON Web Tokens) lifecycle and validation, Role-based access control middleware for route protection."
+          }
+        ],
+        references: [
+          "Web Development with Node and Express by Ethan Brown",
+          "Learning React by Alex Banks and Eve Porcello",
+          "Mastering PostgreSQL by Anthony Wilkens"
+        ]
+      },
+
+      // SEMESTER VI - CS-354-MJ-T
+      {
+        id: "cs354",
+        code: "CS-354-MJ-T",
+        semester: "sem6",
+        semLabel: "Semester VI",
+        title: "Compiler Construction",
+        type: "Major Core",
+        credits: "2 Credits (2 Hr/Wk)",
+        exam: "IE: 15 Marks | UE: 35 Marks (Total 50)",
+        icon: "fa-solid fa-gears",
+        iconColor: "text-orange-500",
+        videoEmbedUrl: "https://www.youtube.com/embed/Qkwj65l_96I", // Compiler Design Gate Smashers
+        summary: "Phases of compilers, Lexical Analysis, Lexemes & Tokens, Context Free Grammars, LL(1) parsing, LR parsing (SLR, CLR, LALR), and Code Optimization.",
+        objectives: [
+          "Understand front-end and back-end compiler phases.",
+          "Build lexical analyzers and parsers with CFG.",
+          "Learn intermediate code representations (Quadruples, Triples) and optimization."
+        ],
+        outcomes: [
+          "CO1: Explain the 6 phases of a modern compiler.",
+          "CO2: Generate tokens and construct finite automata for lexical scanners.",
+          "CO3: Compute FIRST & FOLLOW sets and design LL(1) / LR parsers.",
+          "CO4: Apply code optimizations like dead code and common sub-expression elimination."
+        ],
+        chapters: [
+          {
+            number: "1",
+            title: "Context-Free Grammars & Languages (6 Hours)",
+            topics: "CFG basics, Parse trees, Left-most (LMD) and Right-most derivations (RMD), Ambiguous grammars, Resolving ambiguity using precedence & associativity."
+          },
+          {
+            number: "2",
+            title: "Introduction to Compiler (4 Hours)",
+            topics: "Compiler structure: Front End and Back End, 6 Phases of Compiler (Lexical, Syntax, Semantic, Intermediate Code, Code Optimization, Code Generation), Types: One-pass, Multi-pass, Cross compiler."
+          },
+          {
+            number: "3",
+            title: "Lexical Analysis (Scanner) (5 Hours)",
+            topics: "Tokens, Lexemes, Patterns, Finite Automata in token recognition, Identifier & Number recognition, Lexical error detection."
+          },
+          {
+            number: "4",
+            title: "Syntax Analysis (Parser) (12 Hours)",
+            topics: "Top-Down Parsers: Backtracking issues, Left recursion elimination, Left factoring, Recursive descent parsing, FIRST & FOLLOW sets calculation, LL(1) predictive parsing. Bottom-Up Parsers: Shift-Reduce parsing, LR parsers (SLR, CLR, LALR), Operator Precedence parser."
+          },
+          {
+            number: "5",
+            title: "Code Generation & Optimization (3 Hours)",
+            topics: "Intermediate representations: Postfix, Triples, Quadruples, Expression trees. Code Optimization: Compile time evaluation, Common sub-expression elimination, Dead code elimination, Strength reduction."
+          }
+        ],
+        references: [
+          "Compilers: Principles, Techniques, and Tools (Dragon Book) by Aho, Sethi, Ullman",
+          "Principles of Compiler Design by Alfred V. Aho & Jeffrey D. Ullman"
+        ]
+      },
+
+      // SEMESTER VI - CS-357-MJ-T (Elective)
+      {
+        id: "cs357",
+        code: "CS-357-MJ-T",
+        semester: "sem6",
+        semLabel: "Semester VI",
+        title: "Android Programming",
+        type: "Major Elective",
+        credits: "2 Credits (2 Hr/Wk)",
+        exam: "IE: 15 Marks | UE: 35 Marks (Total 50)",
+        icon: "fa-brands fa-android",
+        iconColor: "text-green-500",
+        videoEmbedUrl: "https://www.youtube.com/embed/fis26HvvDA4", // Android Studio tutorial
+        summary: "Android architecture, Activity lifecycle, Intents, Layouts, UI controls, Menus, Dialogs, SQLite database CRUD, and Shared Preferences.",
+        objectives: [
+          "Understand Android OS architecture and SDK development environments.",
+          "Design intuitive mobile UI using XML layouts and view components.",
+          "Implement SQLite databases and event handlers in Android apps."
+        ],
+        outcomes: [
+          "CO1: Create Android apps with Activity lifecycle and Intent navigation.",
+          "CO2: Design flexible user interfaces with Constraint and Relative layouts.",
+          "CO3: Manage local data storage using SQLite and SharedPreferences."
+        ],
+        chapters: [
+          {
+            number: "1",
+            title: "Fundamentals & Android Architecture (3 Hours)",
+            topics: "History, features, and evolution of Android, Android Software Architecture (Linux kernel, Libraries, ART/DVM, Application Framework, Apps)."
+          },
+          {
+            number: "2",
+            title: "Android Development Environment (3 Hours)",
+            topics: "Android Studio, SDK, JDK, ADT, Android Virtual Devices (AVD), Emulator, Dalvik VM vs JVM, Project folder structure, AndroidManifest.xml."
+          },
+          {
+            number: "3",
+            title: "Activities, Intents and Layouts (7 Hours)",
+            topics: "Activity Lifecycle, Explicit and Implicit Intents, View & ViewGroup, Linear, Relative, Constraint, Frame, and Scroll layouts."
+          },
+          {
+            number: "4",
+            title: "UI Design: GUI Components, Menus & Events (9 Hours)",
+            topics: "TextView, EditText, Buttons, CheckBox, RadioGroup, Spinner, Toast notifications, ListView, GridView, Dialogs (Alert, DatePicker), Menus (Option, Context, Popup)."
+          },
+          {
+            number: "5",
+            title: "Android Components & SQLite Database (8 Hours)",
+            topics: "Services, Broadcast Receivers, Content Providers, SQLiteOpenHelper class, SQLite CRUD: insert, update, query, delete operations."
+          }
+        ],
+        references: [
+          "Android Programming: The Big Nerd Ranch Guide by Bill Phillips",
+          "Beginning Android by Mark L. Murphy",
+          "Android Cookbook by Ian F. Darwin"
+        ]
+      },
+
+      // SEMESTER VI - CS-359-MJ-T (Elective)
+      {
+        id: "cs359",
+        code: "CS-359-MJ-T",
+        semester: "sem6",
+        semLabel: "Semester VI",
+        title: "Software Testing Tools",
+        type: "Major Elective",
+        credits: "2 Credits (2 Hr/Wk)",
+        exam: "IE: 15 Marks | UE: 35 Marks (Total 50)",
+        icon: "fa-solid fa-vial-circle-check",
+        iconColor: "text-teal-500",
+        videoEmbedUrl: "https://www.youtube.com/embed/jBIdOhy_3r8", // Software Testing Full Course
+        summary: "Software Testing Life Cycle (STLC), White/Black box testing, Test case design in Excel, Bugzilla defect tracking, Selenium automation, and JMeter.",
+        objectives: [
+          "Understand verification, validation, and defects vs bugs.",
+          "Write structured test plans and test cases.",
+          "Automate web tests using Selenium and evaluate performance with JMeter."
+        ],
+        outcomes: [
+          "CO1: Differentiate functional, non-functional, and regression testing.",
+          "CO2: Write exhaustive test cases with entry/exit criteria.",
+          "CO3: Track bugs in Bugzilla and automate browser testing in Selenium."
+        ],
+        chapters: [
+          {
+            number: "1",
+            title: "Introduction to Software Testing (4 Hours)",
+            topics: "Testing principles, Verification vs Validation, Error, Bug, Defect, Failure definitions, Static vs Dynamic testing, Code reviews and walkthroughs."
+          },
+          {
+            number: "2",
+            title: "STLC & Types of Software Testing (7 Hours)",
+            topics: "STLC phases, White Box Testing (Path, conditional, unit testing), Black Box Testing (Functional, System, Acceptance), Non-functional testing (Load, Stress, Usability)."
+          },
+          {
+            number: "3",
+            title: "Test Case Design & Defect Management (7 Hours)",
+            topics: "Defect lifecycle, Defect tracking tools (Bugzilla, Jira), Test case templates in Excel, Risk-based testing, Test scenario vs Test script."
+          },
+          {
+            number: "4",
+            title: "Writing Test Plans & Reports (6 Hours)",
+            topics: "Test Plan templates, Resources allocation, Writing test cases for loops/conditions, Test Incident Report, Test Summary Report."
+          },
+          {
+            number: "5",
+            title: "Software Testing Tools (6 Hours)",
+            topics: "Acceptance tools: Cucumber, FitNesse. Functional automation: Selenium WebDriver, TestComplete. Performance testing: Apache JMeter, LoadRunner."
+          }
+        ],
+        references: [
+          "Software Testing Principles and Practices by Naresh Chauhan",
+          "The Art of Software Testing by Glenford Myers",
+          "Selenium WebDriver Recipes by Zhimin Zhan"
+        ]
+      },
+
+      // SEMESTER VI - CS-3511-MJ-T (Elective)
+      {
+        id: "cs3511",
+        code: "CS-3511-MJ-T",
+        semester: "sem6",
+        semLabel: "Semester VI",
+        title: "Internet of Things (IoT)",
+        type: "Major Elective",
+        credits: "2 Credits (2 Hr/Wk)",
+        exam: "IE: 15 Marks | UE: 35 Marks (Total 50)",
+        icon: "fa-solid fa-network-wired",
+        iconColor: "text-sky-500",
+        videoEmbedUrl: "https://www.youtube.com/embed/6mBO2vqLv38", // IoT Full Course
+        summary: "IoT 7-layer reference architecture, Raspberry Pi 4 GPIO programming, MQTT & CoAP protocols, Cloud dashboards with ThingSpeak and Node-RED.",
+        objectives: [
+          "Learn IoT architectures, communication standards, and hardware platforms.",
+          "Interface sensors and actuators with Raspberry Pi using Python.",
+          "Implement MQTT protocol and stream telemetry to Cloud dashboards."
+        ],
+        outcomes: [
+          "CO1: Explain IoT 7-layer architecture and WSN nodes.",
+          "CO2: Program Raspberry Pi GPIO with Python for smart sensors.",
+          "CO3: Deploy MQTT Publish/Subscribe pipelines on Mosquitto."
+        ],
+        chapters: [
+          {
+            number: "1",
+            title: "IoT Fundamentals & System Architecture (8 Hours)",
+            topics: "Definition, characteristics, Industry 1.0 to 4.0, IoTWF 7-layer reference model, Enabling technologies: WSN, Cloud, Big Data, IoT Levels 1 to 5, IoT vs Embedded Systems."
+          },
+          {
+            number: "2",
+            title: "Sensors, Hardware & Cloud Integration (8 Hours)",
+            topics: "Sensors & Actuators, Raspberry Pi architecture & GPIO pinout, Interfacing LED/Switch using Python, Cloud deployment models (SaaS, PaaS, IaaS) in IoT."
+          },
+          {
+            number: "3",
+            title: "IoT Communication Protocols (7 Hours)",
+            topics: "MQTT, CoAP, XMPP, 6LoWPAN, Wireless technologies: Zigbee, Z-Wave, NFC, Wi-Fi, LPWAN comparisons (LoRa, Sigfox, NB-IoT)."
+          },
+          {
+            number: "4",
+            title: "IoT Challenges, Security & Case Studies (7 Hours)",
+            topics: "IoT Privacy & Security challenges, Smart Home case study, Smart Agriculture automation, Industrial IoT (IIoT), Integrating IoT with AI."
+          }
+        ],
+        references: [
+          "Internet of Things: A Hands-on-Approach by Vijay Madisetti & Arshdeep Bahga",
+          "Raspberry Pi Cookbook by Simon Monk"
+        ]
+      }
+    ];
+
+    let currentSemesterFilter = 'all';
+
+    function renderCourses() {
+      const grid = document.getElementById('courseCardsGrid');
+      const noResults = document.getElementById('noResults');
+      const searchVal = document.getElementById('searchInput').value.toLowerCase().trim();
+
+      const filtered = coursesData.filter(course => {
+        const matchesSem = currentSemesterFilter === 'all' || course.semester === currentSemesterFilter;
+        const matchesSearch = 
+          course.title.toLowerCase().includes(searchVal) ||
+          course.code.toLowerCase().includes(searchVal) ||
+          course.summary.toLowerCase().includes(searchVal) ||
+          course.chapters.some(ch => ch.topics.toLowerCase().includes(searchVal) || ch.title.toLowerCase().includes(searchVal));
+        return matchesSem && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        noResults.classList.remove('hidden');
+        return;
+      }
+
+      noResults.classList.add('hidden');
+      grid.innerHTML = filtered.map(course => `
+        <div class="group bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/90 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-indigo-500/50 dark:hover:border-indigo-500/50 transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded-lg text-xs font-bold tracking-wide uppercase bg-indigo-50 text-indigo-700 dark:bg-indigo-950/70 dark:text-indigo-300 border border-indigo-200/50 dark:border-indigo-800">
+                ${course.code}
+              </span>
+              <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+                ${course.semLabel}
+              </span>
+            </div>
+
+            <div class="flex items-start gap-3.5 mb-3">
+              <div class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-xl shrink-0 group-hover:scale-110 transition-transform">
+                <i class="${course.icon} ${course.iconColor}"></i>
+              </div>
+              <div>
+                <h3 class="font-extrabold text-base sm:text-lg text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                  ${course.title}
+                </h3>
+                <span class="text-xs text-indigo-600/90 dark:text-indigo-400 font-semibold">${course.type}</span>
+              </div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 line-clamp-2 mb-4 leading-relaxed">
+              ${course.summary}
+            </p>
+
+            <div class="space-y-1.5 py-3 border-y border-slate-100 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400">
+              <div class="flex items-center justify-between">
+                <span>Credits & Hours:</span>
+                <span class="font-medium text-slate-700 dark:text-slate-200">${course.credits}</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span>Exam Scheme:</span>
+                <span class="font-medium text-slate-700 dark:text-slate-200">${course.exam}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4 flex items-center gap-3">
+            <button onclick="openModal('${course.id}')" class="flex-1 py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold shadow-md shadow-indigo-600/20 transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-book-bookmark"></i> Full Syllabus & Video
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openModal(courseId) {
+      const course = coursesData.find(c => c.id === courseId);
+      if (!course) return;
+
+      document.getElementById('modalCode').innerText = course.code;
+      document.getElementById('modalSem').innerText = course.semLabel;
+      document.getElementById('modalCredits').innerText = course.credits;
+      document.getElementById('modalMarks').innerText = course.exam;
+      document.getElementById('modalTitle').innerText = course.title;
+
+      // Set Video
+      const iframe = document.getElementById('modalVideoFrame');
+      iframe.src = course.videoEmbedUrl;
+
+      // Objectives
+      document.getElementById('modalObjectives').innerHTML = course.objectives
+        .map(obj => `<li>${obj}</li>`).join('');
+
+      // Outcomes
+      document.getElementById('modalOutcomes').innerHTML = course.outcomes
+        .map(out => `<li>${out}</li>`).join('');
+
+      // Detailed Chapters
+      document.getElementById('modalChapters').innerHTML = course.chapters.map(ch => `
+        <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-800">
+          <div class="flex items-center justify-between mb-1.5 font-bold text-slate-900 dark:text-white text-xs sm:text-sm">
+            <span>Chapter ${ch.number}: ${ch.title}</span>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+            ${ch.topics}
+          </p>
+        </div>
+      `).join('');
+
+      // References
+      document.getElementById('modalReferences').innerHTML = course.references
+        .map(ref => `<li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-indigo-400"></i> ${ref}</li>`).join('');
+
+      // Show Modal
+      const modal = document.getElementById('syllabusModal');
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('syllabusModal');
+      modal.classList.add('hidden');
+      document.getElementById('modalVideoFrame').src = ''; // stop video playback
+      document.body.style.overflow = 'auto';
+    }
+
+    // Modal background close on click
+    document.getElementById('syllabusModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+
+    function filterSemester(sem) {
+      currentSemesterFilter = sem;
+
+      const btnAll = document.getElementById('filterAll');
+      const btnSem5 = document.getElementById('filterSem5');
+      const btnSem6 = document.getElementById('filterSem6');
+
+      const activeClass = ['bg-white', 'dark:bg-indigo-600', 'text-slate-900', 'dark:text-white', 'shadow-sm'];
+      const defaultClass = ['text-slate-600', 'dark:text-slate-300', 'hover:text-slate-900', 'dark:hover:text-white'];
+
+      // Reset styles
+      [btnAll, btnSem5, btnSem6].forEach(b => {
+        b.classList.remove(...activeClass);
+        b.classList.add(...defaultClass);
+      });
+
+      if (sem === 'all') {
+        btnAll.classList.add(...activeClass);
+        btnAll.classList.remove(...defaultClass);
+      } else if (sem === 'sem5') {
+        btnSem5.classList.add(...activeClass);
+        btnSem5.classList.remove(...defaultClass);
+      } else if (sem === 'sem6') {
+        btnSem6.classList.add(...activeClass);
+        btnSem6.classList.remove(...defaultClass);
+      }
+
+      renderCourses();
+    }
+
+    function handleSearch() {
+      renderCourses();
+    }
+
+    // Dark/Light Theme Switching
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    themeToggleBtn.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      const isDark = document.documentElement.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
+    // Check saved theme
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    }
+    document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
+
+    let currentRating = 5;
+    function setRating(val) {
+      currentRating = val;
+      const stars = document.querySelectorAll('#starRating .star-btn');
+      stars.forEach((star, index) => {
+        if (index < val) {
+          star.classList.remove('text-slate-300', 'dark:text-slate-600');
+          star.classList.add('text-amber-400');
+        } else {
+          star.classList.remove('text-amber-400');
+          star.classList.add('text-slate-300', 'dark:text-slate-600');
+        }
+      });
+      document.getElementById('ratingValueText').innerText = `${val} / 5 Stars`;
+    }
+
+    function showToast(title, message) {
+      const toast = document.getElementById('toastMessage');
+      document.getElementById('toastTitle').innerText = title;
+      document.getElementById('toastBody').innerText = message;
+
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.add('translate-y-24', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 4000);
+    }
+
+    function submitFeedback(event) {
+      event.preventDefault();
+      const name = document.getElementById('feedbackName').value.trim();
+      const sub = document.getElementById('feedbackSubject').value;
+
+      showToast("Feedback Received!", `Thank you ${name}, your thoughts on "${sub}" have been recorded.`);
+      document.getElementById('feedbackForm').reset();
+      setRating(5);
+    }
+
+    // Initialize initial render on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      renderCourses();
+    });
+  </script>
+</body>
+</html>
